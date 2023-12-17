@@ -27,7 +27,6 @@ urlpatterns = [
     path('api/animes/', include('animeApp.urls')),  # Include your API endpoints
     path('api/animes/', anime_list, name='anime_list'),
     path('admin/', admin.site.urls),
-    path('', include('animeApp.urls')),
 ]
 
 
