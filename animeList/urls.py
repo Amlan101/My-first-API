@@ -14,11 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from animeApp.views import anime_list
+from django.views.generic import RedirectView
+
+# from django.urls.conf.static import static
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/api/animes/')),  # Redirect to your API endpoint
+    path('api/animes/', include('animeApp.urls')),  # Include your API endpoints
+    path('api/animes/', anime_list, name='anime_list'),
     path('admin/', admin.site.urls),
     path('', include('animeApp.urls')),
 ]
+
 
